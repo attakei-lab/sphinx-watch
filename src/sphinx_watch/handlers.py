@@ -44,9 +44,8 @@ class SphinxSourceEventHandler(RegexMatchingEventHandler):
             source_dir=source_dir, build_dir=build_dir, builder_name=builder_name
         )
         self._can_build = False
-        self._can_loop = True
-        self.worker = threading.Thread(target=self.watch_build)
-        self.worker.start()
+        self._can_loop = False
+        self._thread = threading.Thread(target=self.watch_build)
 
     def watch_build(self):
         """Core loop to watch build flag.
@@ -61,6 +60,11 @@ class SphinxSourceEventHandler(RegexMatchingEventHandler):
             # NOTE: Set value not with reason.
             self._can_build = False
 
+    def start_watch(self):
+        """Start loop of ``watch_build`` from outside."""
+        self._can_loop = True
+        self._thread.start()
+
     def stop_watch(self):
         """Stop loop of ``watch_build``.
 
@@ -69,7 +73,7 @@ class SphinxSourceEventHandler(RegexMatchingEventHandler):
         self._can_loop = False
         # NOTE: Set value not with reason. (same to watch_build)
         time.sleep(1)
-        self.worker.join()
+        self._thread.join()
 
     def on_any_event(self, event):
         """Set flag only (main build works at ``watch_build``)."""
