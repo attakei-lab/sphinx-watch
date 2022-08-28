@@ -7,6 +7,7 @@ from watchdog.observers import Observer
 
 from . import __version__
 from .handlers import SphinxSourceEventHandler
+from .httpd import run_http_server
 
 
 @click.command()
@@ -23,7 +24,12 @@ from .handlers import SphinxSourceEventHandler
     ),
 )
 @click.argument("builder", type=click.STRING)
-def main(source_dir: Path, build_dir: Path, builder: str):
+@click.option(
+    "--httpd", is_flag=True, show_default=True, default=False, help="Run HTTP server"
+)
+@click.option("--port", type=int, default=8000, help="Port number for HTTP server")
+def main(source_dir: Path, build_dir: Path, builder: str, httpd: bool, port: int):
+    """Entrypoint of package."""
     click.echo(f"sphinx-watch version is {__version__}")
     click.echo(f"Sphinx version is {sphinx.__display_version__}")
     click.echo(f"Env is:\n\t{source_dir=}\n\t{build_dir=}\n\t{builder=}\n")
@@ -32,6 +38,9 @@ def main(source_dir: Path, build_dir: Path, builder: str):
     observer.schedule(handler, source_dir, recursive=True)
     observer.start()
     try:
+        handler.start_watch()
+        if httpd:
+            run_http_server(port, build_dir)
         while observer.is_alive():
             observer.join(1)
     finally:
