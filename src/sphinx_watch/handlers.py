@@ -54,11 +54,11 @@ class SphinxSourceEventHandler(RegexMatchingEventHandler):
         This method is called as thread target.
         """
         while self._can_loop:
+            time.sleep(1)
             if not self._can_build:
                 continue
             sphinx_build(self.build_context.argv)
             # NOTE: Set value not with reason.
-            time.sleep(1)
             self._can_build = False
 
     def stop_watch(self):
