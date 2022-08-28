@@ -11,16 +11,21 @@ from watchdog.events import RegexMatchingEventHandler
 
 @dataclass
 class SphinxBuildContext:
+    """Management params passing to Sphinx CMD."""
+
     source_dir: Path
     build_dir: Path
     builder_name: str
 
     @property
     def argv(self) -> List[str]:
+        """Return arguments style."""
         return ["-b", self.builder_name, str(self.source_dir), str(self.build_dir)]
 
 
 class SphinxSourceEventHandler(RegexMatchingEventHandler):
+    """Includes build trigger for Sphinx."""
+
     def __init__(
         self,
         source_dir: Path,
@@ -28,7 +33,7 @@ class SphinxSourceEventHandler(RegexMatchingEventHandler):
         builder_name: str,
         extensions=["rst"],
         case_sensitive: bool = False,
-    ):
+    ):  # noqa: D107
         super_args = {
             "case_sensitive": case_sensitive,
             "ignore_directories": [str(build_dir)],
@@ -44,17 +49,28 @@ class SphinxSourceEventHandler(RegexMatchingEventHandler):
         self.worker.start()
 
     def watch_build(self):
+        """Core loop to watch build flag.
+
+        This method is called as thread target.
+        """
         while self._can_loop:
             if not self._can_build:
                 continue
             sphinx_build(self.build_context.argv)
+            # NOTE: Set value not with reason.
             time.sleep(1)
             self._can_build = False
 
     def stop_watch(self):
+        """Stop loop of ``watch_build``.
+
+        This method is called by main loop (obeserver works).
+        """
         self._can_loop = False
+        # NOTE: Set value not with reason. (same to watch_build)
         time.sleep(1)
         self.worker.join()
 
     def on_any_event(self, event):
+        """Set flag only (main build works at ``watch_build``)."""
         self._can_build = True
