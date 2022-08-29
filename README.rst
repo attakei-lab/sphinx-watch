@@ -12,6 +12,15 @@ Overview
 * Build document of Sphinx when source files are changed by users
 * HTTP server to publish built documentation using ``http.server``
 
+Installation
+============
+
+Uploaded PyPI
+
+.. code-block::
+
+   pip install sphinx-watch
+
 Usage
 =====
 

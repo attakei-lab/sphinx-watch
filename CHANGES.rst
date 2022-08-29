@@ -2,8 +2,8 @@
 changelog
 =========
 
-ver 0.0.0 (not released)
-========================
+ver 0.0.1
+=========
 
 First release.
 
