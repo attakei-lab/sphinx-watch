@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "sphinx-watch"
-version = "0.0.0"
+version = "0.1.0"
 description = "Helper CLI for Sphinx to realtime build"
 authors = ["Kazuya Takei <myself@attakei.net>"]
 license = "Apache-2.0"
