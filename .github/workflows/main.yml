@@ -2,6 +2,8 @@ name: Linting adn testing
 
 on:
   push:
+    tags-ignore:
+      - '*'
   pull_request:
   workflow_dispatch:
 
