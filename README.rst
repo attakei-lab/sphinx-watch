@@ -28,19 +28,19 @@ Build only
 
 .. code-block:: console
 
-   sphinx-watch html source build
+   sphinx-watch source build html
 
 Run HTTP server
 
 .. code-block:: console
 
-   sphinx-watch html source build --http
+   sphinx-watch source build html --http
 
 Specify port by running HTTP server
 
 .. code-block:: console
 
-   sphinx-watch html source build --http --port 8080
+   sphinx-watch source build html --http --port 8080
 
 Development
 ===========
