@@ -26,11 +26,10 @@ jobs:
         python-version: ['3.6', '3.7', '3.8', '3.9', '3.10']
     steps:
       - uses: actions/checkout@v3
-      - run: pipx install poetry
       - uses: actions/setup-python@v4
         with:
           architecture: x64
           python-version: ${{ matrix.python-version }}
-          cache: 'poetry'
+      - run: pip install flit
       - name: Check buildable
         run: poetry build

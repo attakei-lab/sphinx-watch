@@ -1,16 +1,13 @@
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
 
-[tool.poetry]
+[project]
 name = "sphinx-watch"
 version = "0.1.0"
 description = "Helper CLI for Sphinx to realtime build"
-authors = ["Kazuya Takei <myself@attakei.net>"]
-license = "Apache-2.0"
+authors = [{name = "Kazuya Takei", email = "myself@attakei.net"}]
 readme = "README.rst"
-homepage = "https://github.com/attakei-lab/sphinx-watch"
-repository = "https://github.com/attakei-lab/sphinx-watch"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Console",
@@ -32,15 +29,18 @@ classifiers = [
     "Topic :: Software Development",
     "Topic :: Software Development :: Documentation",
 ]
-include = ["CHANGES.rst"]
+license = {file = "LICENSE"}
+dependencies = [
+    "click",
+    "Sphinx",
+    "watchdog",
+]
 
-[tool.poetry.dependencies]
-python = "^3.6 | ^3.7 | ^3.8 | ^3.9 | ^3.10"
-watchdog = "*"
-Sphinx = "*"
-click = "*"
+[project.urls]
+Homepage = "https://github.com/attakei-lab/sphinx-watch"
 
-[tool.poetry.dev-dependencies]
+[tool.flit.module]
+name = "sphinx_watch"
 
-[tool.poetry.scripts]
-sphinx-watch = "sphinx_watch.cli:main"
+[tool.flit.sdist]
+exclude = [".github", "doc"]
