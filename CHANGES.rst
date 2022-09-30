@@ -2,6 +2,13 @@
 changelog
 =========
 
+ver 0.1.1
+=========
+
+Change package builder.
+
+.. note:: This version does not have feature-changings.
+
 ver 0.1.0
 =========
 
