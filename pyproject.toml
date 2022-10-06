@@ -36,6 +36,9 @@ dependencies = [
     "watchdog",
 ]
 
+[project.scripts]
+sphinx-watch = "sphinx_watch.cli:main"
+
 [project.urls]
 Homepage = "https://github.com/attakei-lab/sphinx-watch"
 
