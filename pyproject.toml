@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "sphinx-watch"
-version = "0.1.1"
+version = "0.1.2"
 description = "Helper CLI for Sphinx to realtime build"
 authors = [{name = "Kazuya Takei", email = "myself@attakei.net"}]
 readme = "README.rst"

@@ -2,6 +2,14 @@
 changelog
 =========
 
+ver 0.1.2
+=========
+
+Fixes
+-----
+
+* Recover removed CLI-entrypoint from ver0.1.1
+
 ver 0.1.1
 =========
 
