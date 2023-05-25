@@ -27,7 +27,13 @@ from .httpd import run_http_server
 @click.option(
     "--httpd", is_flag=True, show_default=True, default=False, help="Run HTTP server"
 )
-@click.option("--port", type=int, default=8000, help="Port number for HTTP server")
+@click.option(
+    "--port",
+    type=int,
+    default=8000,
+    show_default=True,
+    help="Port number for HTTP server",
+)
 def main(source_dir: Path, build_dir: Path, builder: str, httpd: bool, port: int):
     """Entrypoint of package."""
     click.echo(f"sphinx-watch version is {__version__}")

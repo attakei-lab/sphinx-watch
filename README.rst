@@ -30,7 +30,7 @@ Build only
 
    sphinx-watch source build html
 
-Run HTTP server
+Run HTTP server on the default port, ``8000``:
 
 .. code-block:: console
 
