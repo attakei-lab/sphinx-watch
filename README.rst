@@ -34,13 +34,13 @@ Run HTTP server
 
 .. code-block:: console
 
-   sphinx-watch source build html --http
+   sphinx-watch source build html --httpd
 
 Specify port by running HTTP server
 
 .. code-block:: console
 
-   sphinx-watch source build html --http --port 8080
+   sphinx-watch source build html --httpd --port 8080
 
 Development
 ===========
