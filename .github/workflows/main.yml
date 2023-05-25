@@ -32,4 +32,5 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: pip install flit
       - name: Check buildable
-        run: poetry build
+        run: |
+          flit build

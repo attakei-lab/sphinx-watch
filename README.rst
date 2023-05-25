@@ -45,13 +45,13 @@ Specify port by running HTTP server
 Development
 ===========
 
-This uses ``poetry`` and ``pre-commit``
+This uses ``flit`` and ``pre-commit``
 
 .. code-block:: console
 
    git clone
    cd sphinx-watch
-   poetry install
+   flit build
    pre-commit install
 
 Or install `tox <https://tox.wiki/en/latest/installation.html>`_ and use the `./Makefile

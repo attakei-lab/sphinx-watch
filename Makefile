@@ -18,14 +18,14 @@ all: build
 
 .PHONY: build
 ### Perform any necessary set-up for local development
-build: ./.git/hooks/pre-commit ./var/log/poetry-install.log
+build: ./.git/hooks/pre-commit ./var/log/flit-build.log
 
 
 ## Real Targets:
 
-./var/log/poetry-install.log: ./pyproject.toml
+./var/log/flit-build.log: ./pyproject.toml
 	mkdir -pv "$(dir $(@))"
-	tox exec -e "build" -- poetry install | tee -a "$(@)"
+	tox exec -e "build" -- flit build | tee -a "$(@)"
 
 ./.git/hooks/pre-commit:
 	tox exec -e "build" -- pre-commit install
