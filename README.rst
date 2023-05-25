@@ -45,7 +45,7 @@ Specify port by running HTTP server
 Development
 ===========
 
-This uses ``flit`` and ``pre-commit``
+This uses ``flit``, ``pre-commit``, and ``tox``:
 
 .. code-block:: console
 
@@ -53,13 +53,14 @@ This uses ``flit`` and ``pre-commit``
    cd sphinx-watch
    flit build
    pre-commit install
+   tox
 
 Or install `tox <https://tox.wiki/en/latest/installation.html>`_ and use the `./Makefile
 <./Makefile>`_:
 
 .. code-block:: console
 
-   make
+   make test
 
 License
 =======

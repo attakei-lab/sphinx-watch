@@ -20,6 +20,11 @@ all: build
 ### Perform any necessary set-up for local development
 build: ./.git/hooks/pre-commit ./var/log/flit-build.log
 
+.PHONY: test
+### Test that the package can be installed and run
+test: build
+	tox run-parallel
+
 
 ## Real Targets:
 
