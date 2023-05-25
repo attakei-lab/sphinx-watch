@@ -54,6 +54,13 @@ This uses ``poetry`` and ``pre-commit``
    poetry install
    pre-commit install
 
+Or install `tox <https://tox.wiki/en/latest/installation.html>`_ and use the `./Makefile
+<./Makefile>`_:
+
+.. code-block:: console
+
+   make
+
 License
 =======
 
