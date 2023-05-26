@@ -30,29 +30,37 @@ Build only
 
    sphinx-watch source build html
 
-Run HTTP server
+Run HTTP server on the default port, ``8000``:
 
 .. code-block:: console
 
-   sphinx-watch source build html --http
+   sphinx-watch source build html --httpd
 
 Specify port by running HTTP server
 
 .. code-block:: console
 
-   sphinx-watch source build html --http --port 8080
+   sphinx-watch source build html --httpd --port 8080
 
 Development
 ===========
 
-This uses ``poetry`` and ``pre-commit``
+This uses ``flit``, ``pre-commit``, and ``tox``:
 
 .. code-block:: console
 
    git clone
    cd sphinx-watch
-   poetry install
+   flit build
    pre-commit install
+   tox
+
+Or install `tox <https://tox.wiki/en/latest/installation.html>`_ and use the `./Makefile
+<./Makefile>`_:
+
+.. code-block:: console
+
+   make test
 
 License
 =======
